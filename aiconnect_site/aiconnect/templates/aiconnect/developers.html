@@ -1,0 +1,19 @@
+{% extends "aiconnect/base.html" %}
+{% block title %}Developers - AIConnect{% endblock %}
+{% block content %}
+<h2 class="mb-4">Developers</h2>
+<div class="row">
+    {% for dev in developers %}
+    <div class="col-md-3 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ dev.username }}</h5>
+                <p class="card-text">{{ dev.portfolio.skills|default:"AI Developer" }}</p>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12"><p>No developers found.</p></div>
+    {% endfor %}
+</div>
+{% endblock %}

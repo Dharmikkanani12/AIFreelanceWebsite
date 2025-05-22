@@ -1,0 +1,23 @@
+{% extends "aiconnect/base.html" %}
+{% block title %}Projects - AIConnect{% endblock %}
+{% block content %}
+<h2 class="mb-4">Browse Projects</h2>
+<div class="row">
+    {% for project in projects %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ project.title }}</h5>
+                <p class="card-text">{{ project.description|truncatewords:25 }}</p>
+            </div>
+            <div class="card-footer">
+                <span class="badge bg-primary">Budget: ${{ project.budget }}</span>
+                <span class="badge bg-secondary">Skills: {{ project.skills }}</span>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12"><p>No projects yet.</p></div>
+    {% endfor %}
+</div>
+{% endblock %}

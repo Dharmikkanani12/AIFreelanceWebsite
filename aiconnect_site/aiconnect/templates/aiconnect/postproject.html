@@ -1,0 +1,10 @@
+{% extends "aiconnect/base.html" %}
+{% block title %}Post a Project - AIConnect{% endblock %}
+{% block content %}
+<h2 class="mb-3">Post a Project</h2>
+<form method="POST" class="mx-auto" style="max-width: 500px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Post Project</button>
+</form>
+{% endblock %}

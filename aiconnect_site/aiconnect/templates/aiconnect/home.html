@@ -1,0 +1,46 @@
+{% extends "aiconnect/base.html" %}
+{% block title %}AIConnect - Home{% endblock %}
+{% block content %}
+<div class="text-center mb-5">
+    <h2>Welcome to the AI Freelance Community Platform</h2>
+    <p>Connect with talented AI professionals specializing in generative AI and other cutting-edge technologies.</p>
+</div>
+<section>
+    <h3>Latest Projects</h3>
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ project.title }}</h5>
+                    <p class="card-text">{{ project.description|truncatewords:20 }}</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge bg-primary">Budget: ${{ project.budget }}</span>
+                    <span class="badge bg-secondary">Skills: {{ project.skills }}</span>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12"><p>No projects yet.</p></div>
+        {% endfor %}
+    </div>
+</section>
+<section class="mt-5">
+    <h3>Featured AI Developers</h3>
+    <div class="row">
+        {% for dev in developers %}
+        <div class="col-md-3 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ dev.username }}</h5>
+                    <p class="card-text">{{ dev.portfolio.skills|default:"AI Developer" }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12"><p>No developers found.</p></div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
